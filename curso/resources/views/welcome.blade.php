@@ -89,6 +89,21 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div>
+                    <h2>TESTE COM ROTAS</h2>
+
+                    <form action="/contato" method="post">
+                        {{csrf_field()}}
+                        <input type="text" name="nome" id="" placeholder="Nome /POST">
+                        <button>Enviar</button>
+                    </form>
+                    <form action="/contato" method="post">
+                        {{csrf_field()}}
+                        <input type="hidden" name="_method" value="put">
+                        <input type="text" name="nome" id="" placeholder="Nome /PUT">
+                        <button>Enviar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
