@@ -10,17 +10,17 @@ Route::get('/', function () {
 //     return 'ID'.$id;
 // });
 
-Route::get('contato/{id?}', ['uses'=>'ContatoController@index']);
 
 // Route::post('/contato', function () {
 //    dd($_POST);
 //     return "Contato POST";
 // });
 
-Route::post('/contato', ['uses'=>'ContatoController@criar']);
-Route::put('/contato', ['uses'=>'ContatoController@editar']);
 // Route::put('/contato', function () {
    
 //      return "Contato PUT";
 //  });
  
+Route::get('contato/{id?}', ['uses'=>'ContatoController@index']);
+Route::post('/contato', ['uses'=>'ContatoController@criar']);
+Route::put('/contato', ['uses'=>'ContatoController@editar']);
