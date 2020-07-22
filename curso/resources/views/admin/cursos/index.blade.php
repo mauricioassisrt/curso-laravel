@@ -27,8 +27,8 @@
                         <td><img width="120" src="{{asset($item->imagem)}}" alt="{{$item->titulo}}"></td>
                         <td>{{$item->publicado}}</td>
                         <td>
-                        <a class="btn deep-orange"  href="{{route('admin.cursos.editar', $registro->id)}}">Editar</a>
-                        <a class="btn deep-red"  href="{{route('admin.cursos.deletar', $registro->id)}}">Deletar</a>
+                        <a class="btn deep-orange"  href="{{route('admin.cursos.editar', $item->id)}}">Editar</a>
+                        <a class="btn deep-red"  href="{{route('admin.cursos.deletar', $item->id)}}">Deletar</a>
                         </td>
                     @endforeach
                 </tr>

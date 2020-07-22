@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Curso;
+
 class CursoController extends Controller
 {
     public function index()
@@ -12,8 +13,30 @@ class CursoController extends Controller
         $registros = Curso::all();
         return view('admin.cursos.index', compact('registros'));
     }
- public function adicionar()
- {
-     return view('admin.cursos.adicionar');
- }
+    public function adicionar()
+    {
+        return view('admin.cursos.adicionar');
+    }
+    public function salvar(Request $request)
+    {
+        $dados = $request->all();
+        if (isset($dados['publicado'])) {
+            $dados['publicado']='sim';
+        }else{
+            $dados['publicado']='não'; 
+        }
+        if ($request->hasFile('imagem')) {
+            $image = $request->file('imagem');
+            $numero = rand(1111, 9999);
+            $dir = "img/cursos";
+            $extencao = $image->guessClientExtension();
+            $nomeImagem = "imagem_" . $numero . "." . $extencao;
+            $image->move($dir, $nomeImagem);
+            $dados['imagem'] = $dir . "/" . $nomeImagem;
+        }
+
+        Curso::create($dados);
+
+        return redirect('admin.cursos');
+    }
 }
