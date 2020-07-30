@@ -4,9 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 // passando ? ao lado do id? e id=null não da erro ao passar
 //contato/ sem nehhuma informacao 
 // Route::get('contato/{id?}', function ($id=null) {
@@ -23,7 +21,11 @@ Route::get('/', function () {
    
 //      return "Contato PUT";
 //  });
- 
+//rota home
+Route::get('/', ['as'=>'site.home', 'uses'=> 'Site\HomeController@index']); 
+
+
+//rota contato
 Route::get('contato/{id?}', ['uses'=>'ContatoController@index']);
 Route::post('/contato', ['uses'=>'ContatoController@criar']);
 Route::put('/contato', ['uses'=>'ContatoController@editar']);

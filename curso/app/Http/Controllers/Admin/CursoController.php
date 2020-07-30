@@ -72,4 +72,5 @@ class CursoController extends Controller
         Curso::find($id)->delete();
         return redirect()->route('admin.cursos');
     }
+    
 }
