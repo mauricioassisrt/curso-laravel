@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Curso;
 
+
 class CursoController extends Controller
 {
+    public function __construct()
+    {
+       // $this->middleware('auth');
+    }   
     public function index()
     {
         $registros = Curso::all();
@@ -46,7 +51,7 @@ class CursoController extends Controller
     }
     public function atualizar(Request $request, $id)
     {
-       
+
         $dados = $request->all();
         if (isset($dados['publicado'])) {
             $dados['publicado'] = 'sim';
@@ -72,5 +77,4 @@ class CursoController extends Controller
         Curso::find($id)->delete();
         return redirect()->route('admin.cursos');
     }
-    
 }
