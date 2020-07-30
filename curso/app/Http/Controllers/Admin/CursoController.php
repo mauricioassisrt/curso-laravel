@@ -21,9 +21,9 @@ class CursoController extends Controller
     {
         $dados = $request->all();
         if (isset($dados['publicado'])) {
-            $dados['publicado']='sim';
-        }else{
-            $dados['publicado']='não'; 
+            $dados['publicado'] = 'sim';
+        } else {
+            $dados['publicado'] = 'não';
         }
         if ($request->hasFile('imagem')) {
             $image = $request->file('imagem');
@@ -37,6 +37,34 @@ class CursoController extends Controller
 
         Curso::create($dados);
 
-        return redirect('admin.cursos');
+        return redirect('admin/cursos');
+    }
+    public function editar($id)
+    {
+        $registro = Curso::find($id);
+        return view('admin.cursos.editar', compact('registro'));
+    }
+    public function atualizar(Request $request, $id)
+    {
+       
+        $dados = $request->all();
+        if (isset($dados['publicado'])) {
+            $dados['publicado'] = 'sim';
+        } else {
+            $dados['publicado'] = 'não';
+        }
+        if ($request->hasFile('imagem')) {
+            $image = $request->file('imagem');
+            $numero = rand(1111, 9999);
+            $dir = "img/cursos";
+            $extencao = $image->guessClientExtension();
+            $nomeImagem = "imagem_" . $numero . "." . $extencao;
+            $image->move($dir, $nomeImagem);
+            $dados['imagem'] = $dir . "/" . $nomeImagem;
+        }
+        //atualizar dados 
+        Curso::find($id)->update($dados);
+
+        return redirect()->route('admin.cursos');
     }
 }
