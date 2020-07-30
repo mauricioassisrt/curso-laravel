@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 //rota home
 Route::get('/', ['as'=>'site.home', 'uses'=> 'Site\HomeController@index']); 
 
+//login
+Route::get('/login', ['as'=>'site.login', 'uses'=> 'Site\LoginController@index']); 
+Route::get('/login/entrar', ['as'=>'site.login.entrar', 'uses'=> 'Site\LoginController@entrar']); 
 
 //rota contato
 Route::get('contato/{id?}', ['uses'=>'ContatoController@index']);
