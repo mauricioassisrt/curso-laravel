@@ -24,7 +24,7 @@
                         <td>{{$item->id}}</td>
                         <td>{{$item->titulo}}</td>
                         <td>{{$item->descricao}}</td>
-                        <td><img width="120" src="{{asset($item->imagem)}}" alt="{{$item->titulo}}"></td>
+                        <td><img height="40" src="{{asset($item->imagem)}}" alt="{{$item->titulo}}"></td>
                         <td>{{$item->publicado}}</td>
                         <td>
                         <a class="btn deep-orange"  href="{{route('admin.cursos.editar', $item->id)}}">Editar</a>
